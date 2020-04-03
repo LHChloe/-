@@ -1,0 +1,61 @@
+public class 快排 {
+
+	public static void main(String[] args) {		int []x= {7,5,8,9,4,1,0,10,21,11};
+
+		quicksort(x,0,x.length-1);
+
+		for(int i=0;i<x.length;i++) {
+
+			System.out.print(x[i]+" ");
+
+		}
+
+	}
+
+	static int partsort(int []x,int first,int last){
+
+		int mid=x[first];
+
+		while(first<last) {
+
+			while(first<last && x[last]>=mid) {
+
+				last--;
+
+			}
+
+			x[first]=x[last];
+
+			while(first<last && x[first]<mid) {
+
+				first++;
+
+			}
+
+			x[last]=x[first];
+
+			
+
+		}
+
+		x[first]=mid;
+
+		return first;
+
+	}
+
+	static void quicksort(int []x,int first,int last) {
+
+		if(first<last) {
+
+			int m=partsort(x, first, last);
+
+			quicksort(x,first,m-1);
+
+			quicksort(x,m+1,last);
+
+		}
+
+	}
+
+}
